@@ -1,0 +1,26 @@
+{% extends 'productos/layout.html' %}
+
+{% block content %}
+<br>
+<br>
+<div class="z-depth-2 card" style="border-radius: 10px;">
+    <div class="card-content">
+        <h2 class="left-align">Editar</h2>
+         <blockquote>
+            <h4>
+            {{categoria.name}}
+            </h4>
+        </blockquote>       
+    </div>
+    <div class="card-action">
+        <form action="" method="POST"> {% csrf_token %}
+            <label>Nombre: <input type="text" value="{{categoria.name}}" required name="name"></label><br>
+            <label>Descripción: <input type="text" value="{{categoria.desc}}" required name="desc"></label><br>
+            <center><button class="btn" type="submit">Guardar</button></center>
+        </form>
+    </div>
+</div>
+<br>
+<a href="/categorias/" class="btn">Ir atrás</a><br>
+
+{% endblock %}

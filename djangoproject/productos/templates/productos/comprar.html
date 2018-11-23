@@ -1,0 +1,37 @@
+{% extends 'productos/layout.html' %}
+
+{% block content %}
+<br>
+    <div class="z-depth-2 card" style="border-radius: 10px;">
+    <div class="card-content">
+        <h2 class="left-align">Comprar:</h2>
+         <blockquote>
+            <h4> {{producto.name}}</h4>
+            <h4>${{producto.cost}}</h4>
+            <h4>Disponibles: {{producto.quantity}}</h4>  
+        </blockquote>       
+    </div>
+    <div class="card-action">
+        <form action="" method="POST"> {% csrf_token %}
+            <label>Cantidad: <input type="number" value="1" required name="qty" onchange="cambia()" id="cant"></label><br>
+            <label>Total: <input type="number" value="{{producto.cost}}" required name="total" disabled id="tot"></label><br>
+            <center><button class="btn" type="submit">Comprar</button></center>
+        </form>
+    </div>
+</div>
+
+<br>
+<a href="/productos/" class="btn">Ir atrás</a><br>
+
+<input type="number" value="{{producto.cost}}" hidden id="to">
+
+<script>
+    function cambia() {
+        qty = parseInt(document.getElementById('cant').value);
+        costo = parseInt(document.getElementById('to').value);
+        //alert(qty, costo);
+        document.getElementById('tot').value = parseInt(qty * costo);
+    }
+</script>
+
+{% endblock %}

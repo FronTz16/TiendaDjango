@@ -1,0 +1,43 @@
+{% extends 'productos/layout.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<table class="z-depth-2 striped" style="border-radius: 10px;">
+    <thead>
+        <tr class="blue lighten-3">
+            <th style="padding-left: 5%;">Categoría</th>
+            <th>Descripción</th>
+            <th>Eliminar</th>
+            <th>Editar</th>
+
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for categoria in categorias %}
+        <tr>
+            <td class="collection-item" style="padding-left: 5%;">{{categoria.name}}</td>
+            <td class="collection-item">{{categoria.desc}}</td>
+            <td class="collection-item">
+                <a class="btn" href="/productos/catdelete/{{categoria.id}}">
+                    <i class="small material-icons">delete</i>
+                </a>
+            </td>
+            <td class="collection-item">
+                <a class="btn" href="/productos/catedit/{{categoria.id}}">
+                    <i class="small material-icons">edit</i>
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+<br><br>
+<a style="display:block" class="center-align" href="/crearcat"><button class="btn">Crear categoría</button></a><br>
+
+{% endblock %}
